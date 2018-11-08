@@ -42,7 +42,7 @@ use app\models\Task;
 			  <?php if ($conf['user_id'] == 1 or $conf['level'] == 1 or $conf['level'] == 2) { ?>
               <div id="transmission-full-ctl" class="radio" style="display: inline;" data-rel="tooltip" data-title="<?= yii::t('task', 'file transmission mode full tip') ?>" data-placement="right">
                   <label>
-                      <input name="Task[file_transmission_mode]" value="<?= Task::FILE_TRANSMISSION_MODE_FULL ?>" type="radio" class="ace">
+                      <input name="Task[file_transmission_mode]" value="<?= Task::FILE_TRANSMISSION_MODE_FULL ?>" type="radio" checked="checked" class="ace">
                       <span class="lbl"><?= yii::t('task', 'file transmission mode full') ?></span>
                   </label>
               </div>
@@ -50,7 +50,7 @@ use app\models\Task;
 
               <div id="transmission-part-ctl" class="radio" style="display: inline;" data-rel="tooltip" data-title="<?= yii::t('task', 'file transmission mode part tip') ?>" data-placement="right">
                   <label>
-                      <input name="Task[file_transmission_mode]" value="<?= Task::FILE_TRANSMISSION_MODE_PART ?>" checked="checked" type="radio" class="ace">
+                      <input name="Task[file_transmission_mode]" value="<?= Task::FILE_TRANSMISSION_MODE_PART ?>" type="radio" class="ace">
                       <span class="lbl"><?= yii::t('task', 'file transmission mode part') ?></span>
                   </label>
               </div>
@@ -100,6 +100,12 @@ use app\models\Task;
 
     <?php ActiveForm::end(); ?>
 </div>
+
+<script>
+    $(function() {  
+        $('#task-file_list').hide();
+    }); 
+</script>
 
 <script type="text/javascript">
     jQuery(function($) {
