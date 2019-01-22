@@ -28,7 +28,7 @@ return [
     'reset password by click url' => '点击以下链接完成重置密码，如不是本人操作，请忽略，谢谢！',
     'reset password' => 'reset password',
     'password error' => '用户名或密码错误',
-    'inactive or ban' => '未邮件激活或被冻结',
+    'inactive or ban' => '邮件未激活或账号被冻结',
 
     'users' => '用户管理',
     'search placeholder' => '用户或邮箱',
