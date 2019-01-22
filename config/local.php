@@ -37,6 +37,7 @@ if (is_array($env)) {
 }
 foreach ($data as $k => $v) {
     $_ENV[$k] = $v;
+    putenv("$k=$v");
 }
 ////////////// 全局加载ENV配置文件结束（新增） ///////////// Author: WangBen ////////////// Date: 20190122 /////////////
 
