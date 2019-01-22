@@ -5,8 +5,8 @@
  */
 
 ///////////////////// 处理邮箱后缀开始 //////////////// Author: WangBen //////////////////// Date: 20190122 //////////////
-if (isset($_ENV['MAIL_SUFFIX']) && $_ENV['MAIL_SUFFIX']) {
-    $mail_suffix = explode(',', $_ENV['MAIL_SUFFIX']);
+if (isset(getenv('MAIL_SUFFIX')) && getenv('MAIL_SUFFIX')) {
+    $mail_suffix = explode(',', getenv('MAIL_SUFFIX'));
 } else {
     $mail_suffix = ['*'];
 }
