@@ -4,6 +4,14 @@
  * 此配置为测试配置，如果你不想消息泄露，请尽快修改为自己的邮箱smtp
  */
 
+///////////////////// 处理邮箱后缀开始 //////////////// Author: WangBen //////////////////// Date: 20190122 //////////////
+if (isset($_ENV['MAIL_SUFFIX']) && $_ENV['MAIL_SUFFIX']) {
+    $mail_suffix = explode(',', $_ENV['MAIL_SUFFIX']);
+} else {
+    $mail_suffix = ['*'];
+}
+///////////////////// 处理邮箱后缀结束 //////////////// Author: WangBen //////////////////// Date: 20190122 //////////////
+
 return [
     'user.passwordResetTokenExpire'     => 3600,
     'user.emailConfirmationTokenExpire' => 43200, // 5 days有效
@@ -20,9 +28,10 @@ return [
     // *******Ansible Hosts 主机列表目录*******
     'ansible_hosts.dir'                 => isset($_ENV['WALLE_ANSIBLE_HOSTS_DIR']) ? $_ENV['WALLE_ANSIBLE_HOSTS_DIR'] : realpath(__DIR__ . '/../runtime') . '/ansible_hosts/',
     // *******指定公司邮箱后缀*******
-    'mail-suffix'                       => [
-        '*', # 支持多个
-    ],
+    //'mail-suffix'                       => [
+    //    '*', # 支持多个
+    //],
+    'mail-suffix'                       => $mail_suffix, # 支持多个
     'user_driver'                       => 'local',
     'ldap'                              => [
         'host'           => '127.0.0.1',
