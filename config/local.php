@@ -17,6 +17,29 @@ if (empty($_ENV)) {
     }
 }
 
+////////////// 全局加载ENV配置文件开始（新增） ///////////// Author: WangBen ////////////// Date: 20190122 /////////////
+$data = [];
+$env = parse_ini_file(realpath(dirname(__DIR__)) . '/.env', true);
+if (is_array($env)) {
+    $env = array_change_key_case($env, CASE_UPPER);
+    foreach ($env as $key => $val) {
+        if (is_array($val)) {
+            foreach ($val as $k => $v) {
+                $data[$key . '_' . strtoupper($k)] = $v;
+            }
+        } else {
+            $data[$key] = $val;
+        }
+    }
+} else {
+    $name = strtoupper(str_replace('.', '_', $env));
+    $data[$name] = $value;
+}
+foreach ($data as $k => $v) {
+    $_ENV[$k] = $v;
+}
+////////////// 全局加载ENV配置文件结束（新增） ///////////// Author: WangBen ////////////// Date: 20190122 /////////////
+
 return [
     'components' => [
         'db' => [
